@@ -34,6 +34,7 @@ int main()
     {        
         int option{ lib.options() };
 
+        // Add Book
         if (option == 1)
         {
             Book book{lib.getBook()};
@@ -41,19 +42,30 @@ int main()
             std::cout << "Book added...\n";
         }
 
+        // List Books
         if (option == 2)
         {
             lib.listBooks();
         }
 
+        // Add Student
         if (option == 3)
         {
-            std::cout << "Book lented....";
+            Student student{lib.getStudent()};
+            lib.addStudent(student);
+            std::cout << "Student added...\n";
         }
 
+        // List Students
         if (option == 4)
         {
-            std::cout << "Quitting...\n";
+            lib.listStudents();
+        }
+
+        // Quit
+        if (option == 5)
+        {
+            std::cout << "You quitted LMS...\n";
             break;
         }
         

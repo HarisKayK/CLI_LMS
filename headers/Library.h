@@ -33,6 +33,19 @@ public:
         }
     }
 
+    void listStudents() const
+    {
+        if (m_students.size() == 0)
+        {
+            std::cout << "No Students registered...\n";
+        }
+
+        for (const auto& student : m_students)
+        {
+            student.info();
+        }
+    }
+
     int options() const
     {
         std::vector optionTitles
