@@ -23,11 +23,10 @@ public:
     : m_name{name}, m_id{id} {}
 
     // Member functions
-    void info() const
+    void info(int counter) const
     {
-        static int student_no{};
         std::cout << "______________________________________\n\n";
-        std::cout << "Student #" << ++student_no << "\n\n";
+        std::cout << "Student #" << counter << "\n\n";
         std::cout << "NAME: " << m_name << "\n";
         std::cout << "ID: " << m_id << '\n';
     }
