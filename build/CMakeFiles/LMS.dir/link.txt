@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/LMS.dir/link.d CMakeFiles/LMS.dir/main.cpp.o -o LMS

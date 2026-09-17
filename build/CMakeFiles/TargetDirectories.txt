@@ -1,3 +1,0 @@
-/run/media/haris/New Volume/CodingProjects/LMS/build/CMakeFiles/LMS.dir
-/run/media/haris/New Volume/CodingProjects/LMS/build/CMakeFiles/edit_cache.dir
-/run/media/haris/New Volume/CodingProjects/LMS/build/CMakeFiles/rebuild_cache.dir
