@@ -12,7 +12,7 @@ class Student
 
 private:
     std::string m_name{};
-    std::vector<Book> m_lentBooks{};
+    std::vector<Book> m_borrowedBooks{};
     int m_id{};
 
 public:

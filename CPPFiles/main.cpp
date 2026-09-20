@@ -1,9 +1,9 @@
 #include <iostream>
 
 // Headers
-#include "./headers/Book.h"
-#include "./headers/Student.h"
-#include "./headers/Library.h"
+#include "headers/Book.h"
+#include "headers/Student.h"
+#include "headers/Library.h"
 
 // Function Declarations
 void printTitle();

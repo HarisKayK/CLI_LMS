@@ -28,7 +28,8 @@ private:
         o_listBooks,        // 3
         o_listStudents,     // 4
         o_searchBook,       // 5
-        o_quit,             // 6
+        o_borrowBook,       // 6
+        o_quit,             // 7
     };
 
 public:
@@ -77,7 +78,7 @@ public:
 
             case o_searchBook:
             {
-                searchBook(getIDForSearch());
+                searchBook();
                 break;
             }
         }
@@ -123,6 +124,7 @@ public:
             "List All Books\n",
             "List All Students\n",
             "Search a Book\n",
+            "Borrow a Book\n",
             "Quit\n",
         };
 
@@ -181,27 +183,38 @@ public:
         m_students.push_back(student);
     }
 
-    int getIDForSearch() const
+    void searchBook() const
     {
-        std::cout << "Enter the Book ID: ";
-        int id{};
-        std::cin >> id;
-        return id;
-    }
-    
-    void searchBook(const int id) const
-    {
-        auto book{ std::find_if(std::begin(m_books), std::end(m_books), [&](const Book& b){
-            return b.getID() == id;
-        })};
+        while (true)
+        {   
+            int id{validateIntInput("Enter The Book ID: ")};
 
-        std::cout << "______________________________________\n\n";
-        std::cout << "TITLE: " << book->getTitle() << '\n';
-        std::cout << "AUTHOUR: " << book->getAuthor() << '\n';
-        std::cout << "GENRE: " << book->getGenre() << '\n';
-        std::cout << "ID: " << book->getID() << '\n';
-        std::cout << "______________________________________\n";
+            auto book{ std::find_if(std::begin(m_books), std::end(m_books), [&](const Book& b){
+                return b.getID() == id;
+            })};
+
+            if (book != m_books.end())
+            {
+                std::cout << "______________________________________\n\n";
+                std::cout << "TITLE: " << book->getTitle() << '\n';
+                std::cout << "AUTHOUR: " << book->getAuthor() << '\n';
+                std::cout << "GENRE: " << book->getGenre() << '\n';
+                std::cout << "ID: " << book->getID() << '\n';
+                std::cout << "______________________________________\n";
+                break;
+            }
+            continue;
+        };
     }
+
+    // void borrowBook(const int id)
+    // {
+    //     auto book{ std::find_if(std::begin(m_books), std::end(m_books), [&](const Book& b){
+    //         return b.getID() == id;
+    //     })};
+
+
+    // }
 
 };
 
