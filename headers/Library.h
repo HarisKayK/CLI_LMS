@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <algorithm>
+#include <limits>
+#include <sstream>
 
 #include "Book.h"
 #include "Student.h"
@@ -112,7 +114,7 @@ public:
         std::vector optionTitles
         {
             "Add a Book\n",
-            "Add a Student\n",
+            "Registor a Student\n",
             "List All Books\n",
             "List All Students\n",
             "Search a Book\n",
@@ -128,9 +130,35 @@ public:
         }
         std::cout << '\n';
 
-        std::cout << "> ";
         int option{};
-        std::cin >> option;
+        std::string input{};
+        while (true)
+        {
+            std::cout << "> ";
+            // std::cin >> option;
+            std::getline(std::cin >> std::ws, input);
+            
+            std::stringstream ss{input};
+
+            char leftOver{};
+            if (ss >> option && !(ss >> leftOver))
+            {
+                break;
+            }
+            continue;
+            
+            // if (!std::cin)
+            // {
+            //     std::cin.clear();
+            //     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            // }
+            // else if (std::cin.)
+            // else
+            // {
+            //     break;
+            // }
+        }
+
         return option;
     }
 
