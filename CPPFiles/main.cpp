@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 // Headers
 #include "headers/Book.h"

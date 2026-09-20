@@ -2,6 +2,7 @@
 #define STUDENT_H
 
 #include <iostream>
+#include <string_view>
 #include <string>
 #include <vector>
 
@@ -21,6 +22,9 @@ public:
 
     Student(std::string_view name, int id)
     : m_name{name}, m_id{id} {}
+
+    // Getters
+    int getID() const { return m_id; }
 
     // Member functions
     void info(int counter) const
