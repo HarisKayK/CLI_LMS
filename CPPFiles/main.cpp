@@ -18,7 +18,7 @@ int main()
 
     while (run)
     {
-        int option{ lib.options() };
+        int option{ lib.getOption() };
         run = lib.execute(option);
     }
 

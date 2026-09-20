@@ -5,9 +5,13 @@
 #include <algorithm>
 #include <limits>
 #include <sstream>
+#include <string_view>
 
 #include "Book.h"
 #include "Student.h"
+
+// Function Declarations
+int validateIntInput(std::string_view repeatingMsg);
 
 class Library
 {
@@ -73,7 +77,8 @@ public:
 
             case o_searchBook:
             {
-                searchBook(getID());
+                searchBook(getIDForSearch());
+                break;
             }
         }
 
@@ -109,7 +114,7 @@ public:
         }
     }
 
-    int options() const
+    int getOption() const
     {
         std::vector optionTitles
         {
@@ -130,34 +135,7 @@ public:
         }
         std::cout << '\n';
 
-        int option{};
-        std::string input{};
-        while (true)
-        {
-            std::cout << "> ";
-            // std::cin >> option;
-            std::getline(std::cin >> std::ws, input);
-            
-            std::stringstream ss{input};
-
-            char leftOver{};
-            if (ss >> option && !(ss >> leftOver))
-            {
-                break;
-            }
-            continue;
-            
-            // if (!std::cin)
-            // {
-            //     std::cin.clear();
-            //     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            // }
-            // else if (std::cin.)
-            // else
-            // {
-            //     break;
-            // }
-        }
+        int option{ validateIntInput("> ") };
 
         return option;
     }
@@ -176,20 +154,10 @@ public:
         std::string genre{};
         std::getline(std::cin >> std::ws, genre);
 
-        std::cout << "Enter ID: ";
-        int id{};
-        std::cin >> id;
+        int id{ validateIntInput("Enter ID: ") };
 
         return {title, author, genre, id};
 
-    }
-
-    int getID() const
-    {
-        std::cout << "Enter the Book ID: ";
-        int id{};
-        std::cin >> id;
-        return id;
     }
 
     void addBook(const Book& book)
@@ -203,9 +171,7 @@ public:
         std::string name{};
         std::getline(std::cin >> std::ws, name);
 
-        std::cout << "Enter ID: ";
-        int id{};
-        std::cin >> id;
+        int id{ validateIntInput("Enter ID: ") };
 
         return {name, id};
     }
@@ -215,6 +181,14 @@ public:
         m_students.push_back(student);
     }
 
+    int getIDForSearch() const
+    {
+        std::cout << "Enter the Book ID: ";
+        int id{};
+        std::cin >> id;
+        return id;
+    }
+    
     void searchBook(const int id) const
     {
         auto book{ std::find_if(std::begin(m_books), std::end(m_books), [&](const Book& b){
